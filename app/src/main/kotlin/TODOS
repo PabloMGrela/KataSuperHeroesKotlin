@@ -1,0 +1,12 @@
+*There are some super heroes shown X
+*Empty list X
+*Check the title is shown X
+*All the super heroes are shown properly X
+*Shows the avenger badge for the super heroes X
+*Does not show the avengers badge for the super heroes X
+*Shows the name of the super heroes X
+
+*Check the loading is hidden after super heroes is loaded
+*Check the loading is being shown while fetching super heroes list
+*Opens the details screen
+*Shows the image of our super heroes
