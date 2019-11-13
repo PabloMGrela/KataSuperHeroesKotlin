@@ -61,24 +61,6 @@ class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) 
     }
 
     @Test
-    fun showsFilledListWithSomeSuperHeroes() {
-        givenThereAreSomeSuperHeroes(10)
-        val superHeroes = repository.getAllSuperHeroes()
-
-        startActivity()
-
-        RecyclerViewInteraction.onRecyclerView<SuperHero>(withId(R.id.recycler_view))
-            .withItems(superHeroes)
-            .check { (name), view, exception ->
-                matches(hasDescendant(withText(name))).check(
-                    view,
-                    exception
-                )
-            }
-        onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
-    }
-
-    @Test
     fun showsAvengerBadgeIfSuperHeroeIsAvenger() {
         givenThereAreSomeSuperHeroes(10, true)
         val superHeroes = repository.getAllSuperHeroes()
