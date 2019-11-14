@@ -56,6 +56,10 @@ class SuperHeroDetailActivity : BaseActivity(), SuperHeroDetailPresenter.View {
         iv_super_hero_photo.setImageBackground(superHero.photo)
     }
 
+    override fun showError() {
+        iv_avengers_badge.visibility = View.VISIBLE
+    }
+
     override val activityModules = Module(allowSilentOverride = true) {
         bind<SuperHeroDetailPresenter>() with provider {
             SuperHeroDetailPresenter(this@SuperHeroDetailActivity, instance())

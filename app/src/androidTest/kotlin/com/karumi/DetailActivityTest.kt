@@ -66,6 +66,13 @@ class DetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(SuperHeroDeta
         onView(withId(R.id.iv_avengers_badge)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun whenSuperHeroIsNotInTheListErrorIsShown() {
+        startActivity(SuperHero("randomName", null, false, ""))
+
+        onView(withId(R.id.iv_avengers_badge)).check(matches(isDisplayed()))
+    }
+
     override val testDependencies = Kodein.Module(allowSilentOverride = true) {
         bind<SuperHeroRepository>() with instance(repository)
     }
@@ -79,9 +86,9 @@ class DetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(SuperHeroDeta
         return superHero
     }
 
-    private fun startActivity(superHero: SuperHero): SuperHeroDetailActivity {
+    private fun startActivity(superHero: SuperHero?): SuperHeroDetailActivity {
         val args = Bundle()
-        args.putString("super_hero_name_key", superHero.name)
+        args.putString("super_hero_name_key", superHero?.name)
         return startActivity(args)
     }
 

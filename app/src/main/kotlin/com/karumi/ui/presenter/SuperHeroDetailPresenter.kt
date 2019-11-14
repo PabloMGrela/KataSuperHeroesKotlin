@@ -44,7 +44,9 @@ class SuperHeroDetailPresenter(
     private fun refreshSuperHeroes() = launch {
         val result = async { getSuperHeroByName(name) }
         view?.hideLoading()
-        view?.showSuperHero(result)
+        result?.let {
+            view?.showSuperHero(it)
+        } ?: view?.showError()
     }
 
     interface View {
@@ -52,5 +54,6 @@ class SuperHeroDetailPresenter(
         fun showLoading()
         fun hideLoading()
         fun showSuperHero(superHero: SuperHero)
+        fun showError()
     }
 }
